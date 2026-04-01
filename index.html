@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tee-shirt femme en coton manches courtes — Petit Bateau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#1b3a5c;
+  --navy-dark:#0d2338;
+  --red:#e63946;
+  --white:#ffffff;
+  --cream:#fafaf8;
+  --g50:#f5f5f3;
+  --g100:#eceae7;
+  --g200:#d8d5d0;
+  --g300:#bfbbb5;
+  --g400:#9e9990;
+  --g600:#6b6660;
+  --g800:#3a3830;
+  --green:#2a6e4a;
+  --amber:#7a4a10;
+  --blue-link:#1b3a5c;
+  --r:2px;
+  --font-serif:'Libre Baskerville',Georgia,serif;
+  --font-sans:'Source Sans 3',system-ui,sans-serif;
+}
+body{font-family:var(--font-sans);background:var(--white);color:var(--g800);font-size:14px;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+button,input,select{font-family:var(--font-sans);}
+
+/* ── Top bar ── */
+.topbar{
+  background:var(--navy);color:var(--white);
+  text-align:center;padding:8px 20px;
+  font-size:12px;letter-spacing:.05em;
+}
+.topbar strong{font-weight:600;}
+
+/* ── Nav ── */
+.nav{
+  background:var(--white);border-bottom:1px solid var(--g100);
+  padding:0 32px;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+.nav-logo{cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;}
+.nav-logo-name{font-family:var(--font-serif);font-size:19px;font-weight:700;color:var(--navy);letter-spacing:.12em;text-transform:uppercase;}
+.nav-logo-sub{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--g400);}
+.nav-links{display:flex;gap:24px;}
+.nav-link{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);cursor:pointer;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+.nav-link:hover,.nav-link.active{color:var(--navy);border-color:var(--navy);}
+.nav-right{display:flex;align-items:center;gap:18px;}
+.nav-search{display:flex;align-items:center;gap:7px;background:var(--g50);border:1px solid var(--g200);border-radius:20px;padding:6px 14px;width:190px;}
+.nav-search input{border:none;background:transparent;font-size:12px;font-family:var(--font-sans);outline:none;width:100%;}
+.nav-search input::placeholder{color:var(--g400);}
+.nav-icon{cursor:pointer;color:var(--g600);transition:color .15s;position:relative;}
+.nav-icon:hover{color:var(--navy);}
+.cart-dot{position:absolute;top:-4px;right:-6px;width:15px;height:15px;background:var(--navy);color:var(--white);border-radius:50%;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+
+/* ── Promo strip ── */
+.promo-strip{background:var(--cream);border-bottom:1px solid var(--g100);display:flex;align-items:center;justify-content:center;gap:36px;padding:8px 32px;flex-wrap:wrap;}
+.promo-item{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:500;color:var(--navy);letter-spacing:.03em;}
+
+/* ── Breadcrumb ── */
+.breadcrumb{padding:10px 32px;font-size:11px;color:var(--g400);display:flex;gap:6px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--g50);}
+.breadcrumb span{cursor:pointer;}
+.breadcrumb span:hover{color:var(--navy);}
+.bc-sep{color:var(--g300);}
+.bc-current{color:var(--g600);}
+
+/* ── PDP layout ── */
+.pdp-layout{display:grid;grid-template-columns:1fr 480px;max-width:1200px;margin:0 auto;padding:24px 32px 80px;gap:52px;align-items:start;}
+
+/* ── Gallery ── */
+.gallery{display:flex;gap:10px;}
+.thumbs{display:flex;flex-direction:column;gap:6px;width:76px;flex-shrink:0;}
+.thumb{width:76px;height:92px;border:1px solid var(--g200);cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--cream);transition:border-color .15s;}
+.thumb.active{border:2px solid var(--navy);}
+.thumb:hover{border-color:var(--g400);}
+.thumb img{width:100%;height:100%;object-fit:cover;}
+.gallery-main{flex:1;background:var(--cream);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+.gallery-main img{width:100%;height:100%;object-fit:cover;}
+.gallery-badge{position:absolute;top:12px;left:12px;background:var(--navy);color:var(--white);font-size:10px;font-weight:700;padding:3px 9px;letter-spacing:.08em;text-transform:uppercase;}
+.gallery-wishlist{position:absolute;top:12px;right:12px;width:36px;height:36px;background:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.1);}
+.gallery-fallback{display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;height:100%;}
+
+/* ── Product info ── */
+.pdp-info{position:sticky;top:78px;}
+.pdp-ref{font-size:10px;color:var(--g400);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.pdp-name{font-family:var(--font-serif);font-size:24px;font-weight:700;line-height:1.25;color:var(--navy-dark);margin-bottom:6px;}
+.pdp-subname{font-size:14px;color:var(--g600);margin-bottom:12px;font-style:italic;}
+.pdp-rating{display:flex;align-items:center;gap:7px;font-size:12px;margin-bottom:16px;}
+.stars{color:var(--navy);letter-spacing:1px;font-size:14px;}
+.stars .empty{color:var(--g200);}
+.rating-count{color:var(--g400);font-size:11px;}
+.pdp-price-wrap{display:flex;align-items:baseline;gap:10px;margin-bottom:18px;}
+.pdp-price{font-size:28px;font-weight:700;color:var(--navy-dark);}
+.pdp-price-old{font-size:16px;color:var(--g400);text-decoration:line-through;}
+.pdp-points{font-size:11px;color:var(--g400);margin-bottom:18px;padding:8px 10px;background:var(--g50);border-left:2px solid var(--navy);display:flex;align-items:center;gap:6px;}
+.pdp-points strong{color:var(--navy);}
+
+/* ── Colour ── */
+.opt-label{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--g600);margin-bottom:8px;}
+.color-val{font-weight:400;color:var(--g800);text-transform:none;letter-spacing:0;}
+.color-swatches{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.color-swatch{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;outline:2px solid transparent;outline-offset:2px;transition:outline-color .15s;}
+.color-swatch.active{outline-color:var(--navy);}
+
+/* ── Size ── */
+.size-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.size-guide{font-size:11px;color:var(--navy);cursor:pointer;text-decoration:underline;font-weight:500;}
+.sizes{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
+.size-btn{min-width:56px;height:42px;padding:0 8px;border:1px solid var(--g200);background:var(--white);font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .15s,background .15s,color .15s;}
+.size-btn:hover{border-color:var(--navy);color:var(--navy);}
+.size-btn.active{border:2px solid var(--navy);background:var(--navy);color:var(--white);font-weight:600;}
+.size-btn.oos{opacity:.3;pointer-events:none;text-decoration:line-through;}
+
+/* ── CTA ── */
+.btn-atb{width:100%;height:52px;background:var(--navy);color:var(--white);border:none;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;transition:background .15s;}
+.btn-atb:hover{background:var(--navy-dark);}
+.btn-wishlist{width:100%;height:44px;background:transparent;color:var(--g800);border:1px solid var(--g200);font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:24px;transition:border-color .15s,color .15s;}
+.btn-wishlist:hover{border-color:var(--navy);color:var(--navy);}
+
+/* ═══════════════════════════════════════
+   BLOC PROMESSE DE LIVRAISON
+   ═══════════════════════════════════════ */
+.db-wrap{border-top:1px solid var(--g100);padding-top:18px;}
+.db-section-label{font-size:11px;font-weight:700;color:var(--g600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.db-section-label::after{content:'';flex:1;height:1px;background:var(--g100);}
+
+.db-postal-wrap{position:relative;margin-bottom:12px;}
+.db-postal-field{display:flex;align-items:center;gap:8px;height:42px;padding:0 12px;background:var(--g50);border:1px solid var(--g200);transition:border-color .15s;}
+.db-postal-field:focus-within{border-color:var(--navy);}
+.db-postal-input{border:none;background:transparent;font-size:13px;color:var(--g800);flex:1;outline:none;font-family:var(--font-sans);}
+.db-postal-input::placeholder{color:var(--g300);}
+.db-postal-clear{font-size:18px;cursor:pointer;color:var(--g300);display:none;line-height:1;}
+.db-postal-clear:hover{color:var(--navy);}
+.db-autocomplete{position:absolute;top:calc(100% + 2px);left:0;right:0;background:var(--white);border:1px solid var(--g200);z-index:60;display:none;box-shadow:0 6px 20px rgba(0,0,0,.08);}
+.db-autocomplete.open{display:block;}
+.db-ac-item{padding:9px 12px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g50);}
+.db-ac-item:last-child{border-bottom:none;}
+.db-ac-item:hover,.db-ac-item.on{background:var(--g50);}
+.db-ac-cp{font-weight:600;min-width:48px;font-size:12px;color:var(--navy);}
+.db-ac-city{color:var(--g600);}
+.db-ac-reg{font-size:11px;color:var(--g300);margin-left:auto;}
+
+.db-options{display:flex;flex-direction:column;gap:7px;}
+.db-option{display:flex;align-items:center;gap:11px;padding:11px 12px;border:1px solid var(--g100);cursor:pointer;background:var(--white);transition:border-color .18s,background .18s;}
+.db-option:not(.disabled):hover{border-color:var(--g300);background:var(--g50);}
+.db-option.selected{border:1.5px solid var(--navy);background:var(--cream);}
+.db-option.disabled{opacity:.35;cursor:default;}
+.db-option.cc-open{align-items:flex-start;}
+.db-opt-icon{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.db-opt-body{flex:1;min-width:0;}
+.db-opt-r1{display:flex;align-items:center;gap:6px;margin-bottom:1px;flex-wrap:wrap;}
+.db-opt-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--g800);}
+.db-badge{font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;}
+.b-express{background:#e6f4ed;color:#2a6e4a;}
+.b-fast{background:#e8eef6;color:#1b3a5c;}
+.b-std{background:#f0ede9;color:#6b6660;}
+.b-cc{background:#eef2f8;color:#1b3a5c;}
+.db-opt-r2{font-size:11px;color:var(--g600);line-height:1.4;}
+.db-opt-r3{font-size:11px;color:var(--g400);margin-top:2px;}
+.db-opt-price{font-size:12px;font-weight:700;white-space:nowrap;flex-shrink:0;color:var(--g800);}
+.db-lock{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--g300);}
+.db-link{color:var(--navy);cursor:pointer;text-decoration:underline;font-size:11px;margin-left:5px;}
+
+.db-store-list{display:none;flex-direction:column;gap:5px;margin-top:9px;padding:8px;background:var(--g50);border:1px solid var(--g100);}
+.db-store-list.open{display:flex;}
+.db-store-hint{font-size:10px;color:var(--g400);margin-bottom:3px;letter-spacing:.07em;text-transform:uppercase;}
+.db-store-item{display:flex;align-items:center;gap:8px;padding:8px 9px;cursor:pointer;border:1px solid var(--g200);background:var(--white);transition:border-color .15s;}
+.db-store-item:hover{border-color:var(--g400);}
+.db-store-item.chosen{border:1.5px solid var(--navy);background:var(--cream);}
+.db-store-name{font-size:12px;font-weight:500;flex:1;}
+.db-store-addr{font-size:11px;color:var(--g400);}
+.dly-fast{font-size:11px;font-weight:600;color:var(--green);white-space:nowrap;}
+.dly-slow{font-size:11px;font-weight:600;color:var(--amber);white-space:nowrap;}
+
+/* ── Reassurance ── */
+.reassurance{display:flex;gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--g100);flex-wrap:wrap;}
+.reassurance-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--g600);flex:1;min-width:110px;}
+
+/* ── Accordion ── */
+.accordion{margin-top:20px;border-top:1px solid var(--g100);}
+.accordion-item{border-bottom:1px solid var(--g100);}
+.accordion-trigger{display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer;width:100%;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;background:none;border:none;color:var(--g800);}
+.accordion-trigger:hover{color:var(--navy);}
+.accordion-trigger svg{transition:transform .2s;flex-shrink:0;}
+.accordion-trigger.open svg{transform:rotate(45deg);}
+.accordion-body{display:none;padding:0 0 14px;font-size:12px;color:var(--g600);line-height:1.7;}
+.accordion-body.open{display:block;}
+
+@media(max-width:860px){
+  .pdp-layout{grid-template-columns:1fr;padding:16px 16px 60px;gap:24px;}
+  .nav-links,.nav-search{display:none;}
+  .pdp-info{position:static;}
+}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  Bénéficiez de <strong>-15%</strong> sur votre première commande en vous inscrivant à notre newsletter
+</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-links">
+    <span class="nav-link">Nouveautés</span>
+    <span class="nav-link active">Femme</span>
+    <span class="nav-link">Homme</span>
+    <span class="nav-link">Enfant</span>
+    <span class="nav-link">Bébé</span>
+    <span class="nav-link" style="color:var(--red);border-color:transparent;">Soldes</span>
+  </div>
+  <div class="nav-logo">
+    <div class="nav-logo-name">Petit Bateau</div>
+    <div class="nav-logo-sub">depuis 1893</div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-search">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="#9e9990" stroke-width="1.3"/><path d="M11 11l3 3" stroke="#9e9990" stroke-width="1.3" stroke-linecap="round"/></svg>
+      <input placeholder="Rechercher…"/>
+    </div>
+    <span class="nav-icon">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.3"/><path d="M3 18c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="currentColor" stroke-width="1.3"/></svg>
+    </span>
+    <span class="nav-icon">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 16s-7-4.5-7-9a5 5 0 0 1 7-4.6A5 5 0 0 1 17 7c0 4.5-7 9-7 9z" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
+    </span>
+    <span class="nav-icon" style="position:relative;">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 3h2l2.4 9.6h8L17.4 7H6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/><circle cx="9" cy="16" r="1.2" fill="currentColor"/><circle cx="15" cy="16" r="1.2" fill="currentColor"/></svg>
+      <span class="cart-dot">1</span>
+    </span>
+  </div>
+</nav>
+
+<!-- Promo strip -->
+<div class="promo-strip">
+  <div class="promo-item">
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 6h9l1 6H3L2 6z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="13.5" r="1.2" fill="currentColor"/><circle cx="10.5" cy="13.5" r="1.2" fill="currentColor"/></svg>
+    Livraison offerte dès 79 €
+  </div>
+  <div class="promo-item">
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5.51 1.5 3.5 3.51 3.5 6c0 2.25 3.15 7.2 4.5 8.85C9.35 13.2 12.5 8.25 12.5 6c0-2.49-2.01-4.5-4.5-4.5zm0 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="currentColor"/></svg>
+    Retrait en boutique offert
+  </div>
+  <div class="promo-item">
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2L3 4v4c0 3.3 2.2 6 5 6.7C10.8 14 13 11.3 13 8V4L8 2z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+    Retours offerts sous 30 jours
+  </div>
+  <div class="promo-item">
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1" y="4" width="14" height="10" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M1 8h14" stroke="currentColor" stroke-width="1.2"/></svg>
+    Paiement sécurisé
+  </div>
+</div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  <span>Accueil</span><span class="bc-sep">›</span>
+  <span>Femme</span><span class="bc-sep">›</span>
+  <span>Vêtements</span><span class="bc-sep">›</span>
+  <span>T-shirts &amp; débardeurs</span><span class="bc-sep">›</span>
+  <span class="bc-current">Tee-shirt femme en coton manches courtes</span>
+</div>
+
+<!-- PDP -->
+<div class="pdp-layout">
+
+  <!-- Galerie -->
+  <div class="gallery">
+    <div class="thumbs">
+      <div class="thumb active" onclick="setThumb('petitbateau.jpg',this)">
+        <img src="petitbateau.jpg" alt="Vue 1" onerror="this.parentElement.style.background='#eceae7'"/>
+      </div>
+      <div class="thumb" onclick="setThumb('petitbateau.jpg',this)">
+        <img src="petitbateau.jpg" alt="Vue 2" onerror="this.parentElement.style.background='#eceae7'"/>
+      </div>
+      <div class="thumb" onclick="setThumb('petitbateau.jpg',this)">
+        <img src="petitbateau.jpg" alt="Vue 3" onerror="this.parentElement.style.background='#eceae7'"/>
+      </div>
+      <div class="thumb" onclick="setThumb('petitbateau.jpg',this)">
+        <img src="petitbateau.jpg" alt="Vue 4" onerror="this.parentElement.style.background='#eceae7'"/>
+      </div>
+    </div>
+    <div class="gallery-main">
+      <div class="gallery-badge">Nouveauté</div>
+      <div class="gallery-wishlist">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M9 15S2 10.5 2 6a5 5 0 0 1 7-4.6A5 5 0 0 1 16 6c0 4.5-7 9-7 9z" stroke="#1b3a5c" stroke-width="1.4" fill="none"/></svg>
+      </div>
+      <img id="main-img" src="petitbateau.jpg" style="width:100%;height:100%;object-fit:cover;"
+           alt="Tee-shirt femme en coton manches courtes Marshmallow/Smoking — Petit Bateau"
+           onerror="this.style.display='none';document.getElementById('main-fallback').style.display='flex'"/>
+      <div id="main-fallback" class="gallery-fallback">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="6" y="6" width="40" height="40" rx="3" stroke="#d8d5d0" stroke-width="1.5"/><path d="M6 36l12-10 9 7 7-6 12 10" stroke="#d8d5d0" stroke-width="1.5" stroke-linejoin="round"/><circle cx="20" cy="20" r="5" stroke="#d8d5d0" stroke-width="1.5"/></svg>
+        <span style="font-size:11px;color:var(--g300);letter-spacing:.06em;">Placez votre image ici</span>
+        <span style="font-size:10px;color:var(--g300);">petitbateau.jpg</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Infos produit -->
+  <div class="pdp-info">
+    <div class="pdp-ref">Réf. A0FWA01</div>
+    <h1 class="pdp-name">Tee-shirt femme en coton manches courtes</h1>
+    <div class="pdp-subname">Marshmallow / Smoking — L'Iconique</div>
+
+    <div class="pdp-rating">
+      <span class="stars">★★★★<span class="empty">★</span></span>
+      <span style="font-size:12px;font-weight:600;">4.5</span>
+      <span class="rating-count">(312 avis)</span>
+      <a href="#" style="font-size:11px;color:var(--navy);margin-left:4px;text-decoration:underline;">Voir les avis</a>
+    </div>
+
+    <div class="pdp-price-wrap">
+      <span class="pdp-price">29,00 €</span>
+    </div>
+
+    <div class="pdp-points">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#1b3a5c" stroke-width="1.2"/><path d="M8 5v4l2.5 2" stroke="#1b3a5c" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Cet achat vous rapportera <strong>+29 points fidélité</strong> — dès 100 pts, 5 € offerts
+    </div>
+
+    <!-- Coloris -->
+    <div style="margin-bottom:18px;">
+      <div class="opt-label">Coloris : <span class="color-val" id="color-val">Marshmallow / Smoking</span></div>
+      <div class="color-swatches">
+        <div class="color-swatch active" style="background:linear-gradient(135deg,#f5f5f0 50%,#1c1c28 50%);" title="Marshmallow/Smoking" onclick="selectColor(this,'Marshmallow / Smoking')"></div>
+        <div class="color-swatch" style="background:linear-gradient(135deg,#e8f0f8 50%,#1b3a5c 50%);" title="Blanc/Marine" onclick="selectColor(this,'Blanc / Marine')"></div>
+        <div class="color-swatch" style="background:linear-gradient(135deg,#fce8ea 50%,#c0354a 50%);" title="Rose/Rouge" onclick="selectColor(this,'Rose / Rouge')"></div>
+        <div class="color-swatch" style="background:linear-gradient(135deg,#f5f5f0 50%,#2a6e4a 50%);" title="Blanc/Vert" onclick="selectColor(this,'Blanc / Vert forêt')"></div>
+      </div>
+    </div>
+
+    <!-- Taille -->
+    <div style="margin-bottom:18px;">
+      <div class="size-header">
+        <div class="opt-label" style="margin-bottom:0;">Taille :</div>
+        <span class="size-guide">Guide des tailles</span>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="sizes">
+        <button class="size-btn oos" disabled>XXS</button>
+        <button class="size-btn" onclick="selectSize(this)">XS</button>
+        <button class="size-btn active" onclick="selectSize(this)">S</button>
+        <button class="size-btn" onclick="selectSize(this)">M</button>
+        <button class="size-btn" onclick="selectSize(this)">L</button>
+        <button class="size-btn" onclick="selectSize(this)">XL</button>
+        <button class="size-btn" onclick="selectSize(this)">2XL</button>
+      </div>
+    </div>
+
+    <button class="btn-atb">Ajouter au panier</button>
+    <button class="btn-wishlist">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 13S2 9 2 5a4 4 0 0 1 6-3.5A4 4 0 0 1 14 5c0 4-6 8-6 8z" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
+      Ajouter à ma liste de souhaits
+    </button>
+
+    <!-- ═══════════════════════════════════════════
+         BLOC PROMESSE DE LIVRAISON
+         (remplace les blocs "Livraison à domicile"
+         et "Click & Collect 2h" d'origine)
+         ═══════════════════════════════════════════ -->
+    <div class="db-wrap">
+      <div class="db-section-label">Livraison &amp; Retrait</div>
+
+      <!-- Champ ville / code postal -->
+      <div class="db-postal-wrap">
+        <div class="db-postal-field">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;opacity:.45">
+            <path d="M7 1C4.79 1 3 2.79 3 5c0 2.63 4 8 4 8s4-5.37 4-8c0-2.21-1.79-4-4-4zm0 5.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#6b6660"/>
+          </svg>
+          <input class="db-postal-input" id="db-pc-input" placeholder="Ville ou code postal…" autocomplete="off"/>
+          <span class="db-postal-clear" id="db-pc-clear" onclick="dbClearPostal()">×</span>
+        </div>
+        <div class="db-autocomplete" id="db-ac"></div>
+      </div>
+
+      <div class="db-options">
+
+        <!-- Livraison le jour même -->
+        <div class="db-option disabled" id="db-same">
+          <div class="db-opt-icon" style="background:#e6f4ed;">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm.75 6.94L5.53 11.66l-.53-.54 2.97-2.97V4h1v4.44z" fill="#2a6e4a"/></svg>
+          </div>
+          <div class="db-opt-body">
+            <div class="db-opt-r1">
+              <span class="db-opt-title">Livraison le jour même</span>
+              <span class="db-badge b-express">Express</span>
+            </div>
+            <div class="db-opt-r2">Commandez avant 13h, livraison ce soir entre 18h et 22h.</div>
+            <div class="db-opt-r3" id="db-same-r3">
+              <span class="db-lock">
+                <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M9 5H3V4a3 3 0 1 1 6 0v1zm1 0V4a4 4 0 0 0-8 0v1H1v6h10V5H10z" fill="#bfbbb5"/></svg>
+                Entrez votre code postal pour vérifier
+              </span>
+            </div>
+          </div>
+          <div class="db-opt-price">7,99 €</div>
+        </div>
+
+        <!-- Livraison à domicile 1-3 jours -->
+        <div class="db-option" id="db-dom" onclick="dbSelect(this)">
+          <div class="db-opt-icon" style="background:#e8eef6;">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M1 3h14v2H1V3zm1 3h12l-1 7H3L2 6zm3 2v4h1V8H5zm3 0v4h1V8H8zm3 0v4h1V8h-1z" fill="#1b3a5c"/></svg>
+          </div>
+          <div class="db-opt-body">
+            <div class="db-opt-r1">
+              <span class="db-opt-title">Livraison à domicile</span>
+              <span class="db-badge b-fast">1 à 3 jours ouvrés</span>
+            </div>
+            <div class="db-opt-r2">Livraison Colissimo à domicile, suivi en temps réel inclus.</div>
+            <div class="db-opt-r3">Offerte dès 79 € · Sinon 4,95 €</div>
+          </div>
+          <div class="db-opt-price">4,95 €</div>
+        </div>
+
+        <!-- Livraison standard -->
+        <div class="db-option" id="db-std" onclick="dbSelect(this)">
+          <div class="db-opt-icon" style="background:#f0ede9;">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M13 5H3L2 13h12L13 5zM5 3h6V2H5v1zm-2 2h10l.5-.5V4H2.5v.5L3 5z" fill="#6b6660"/></svg>
+          </div>
+          <div class="db-opt-body">
+            <div class="db-opt-r1">
+              <span class="db-opt-title">Livraison en point relais</span>
+              <span class="db-badge b-std">2 à 5 jours</span>
+            </div>
+            <div class="db-opt-r2">Retrait dans plus de 15 000 points relais en France.</div>
+            <div class="db-opt-r3">Livraison avant le 21 mars</div>
+          </div>
+          <div class="db-opt-price">3,95 €</div>
+        </div>
+
+        <!-- Click & Collect -->
+        <div class="db-option" id="db-cc" onclick="dbToggleStores()">
+          <div class="db-opt-icon" style="background:#eef2f8;flex-shrink:0;">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5.51 1.5 3.5 3.51 3.5 6c0 2.25 3.15 7.2 4.5 8.85C9.35 13.2 12.5 8.25 12.5 6c0-2.49-2.01-4.5-4.5-4.5zm0 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#1b3a5c"/></svg>
+          </div>
+          <div class="db-opt-body">
+            <div class="db-opt-r1">
+              <span class="db-opt-title">Click &amp; Collect en boutique</span>
+              <span class="db-badge b-cc">2h</span>
+            </div>
+            <div class="db-opt-r2">Retrait gratuit en 2h dans votre boutique Petit Bateau.</div>
+            <div class="db-opt-r3" id="db-cc-r3">Choisir une boutique →</div>
+            <div class="db-store-list" id="db-store-list"></div>
+          </div>
+          <div class="db-opt-price">Gratuit</div>
+        </div>
+
+      </div>
+
+      <!-- Réassurance -->
+      <div class="reassurance">
+        <div class="reassurance-item">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2L3 4v4c0 3.3 2.2 6 5 6.7C10.8 14 13 11.3 13 8V4L8 2z" stroke="#1b3a5c" stroke-width="1.2" fill="none"/></svg>
+          Paiement sécurisé
+        </div>
+        <div class="reassurance-item">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 9l4 4 8-8" stroke="#1b3a5c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Retours gratuits 30 jours
+        </div>
+        <div class="reassurance-item">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#1b3a5c" stroke-width="1.2"/><path d="M8 5v4l2 1.5" stroke="#1b3a5c" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Service client 7j/7
+        </div>
+      </div>
+    </div>
+    <!-- ═══════════════════════════════════════════
+         FIN DU BLOC PROMESSE DE LIVRAISON
+         ═══════════════════════════════════════════ -->
+
+    <!-- Accordéons -->
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          Description
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="accordion-body">
+          Tee-shirt à manches courtes en côte 1x1 rayure mini marinière, la matière iconique de Petit Bateau, souple et confortable, qui assure une parfaite liberté de mouvement. Encolure ronde contrastée. Coupe près du corps et ajustée. Logo Petit Bateau imprimé au bas du tee-shirt en coloris ton sur ton. Coton issu de l'agriculture biologique.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          Composition &amp; entretien
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="accordion-body">
+          100% Coton biologique<br><br>
+          Lavage en machine à 30°C. Ne pas utiliser de sèche-linge. Repasser à température maximale 110°C. Ne pas repasser à la vapeur. Lavage séparé recommandé.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          Livraisons &amp; retours
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="accordion-body">
+          Livraison à domicile en 1 à 3 jours ouvrés, offerte dès 79 €. Click & Collect gratuit en boutique sous 2h. Retours gratuits sous 30 jours en boutique ou par Colissimo.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          Seconde vie
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="accordion-body">
+          Vos vêtements ont de la valeur, donnez-leur une seconde vie. Vous pouvez rapporter vos vêtements Petit Bateau dans les boutiques participantes en échange d'un bon d'achat.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ── Données bouchonnées ── */
+var MOCK_CITIES=[
+  {cp:'75001',city:'Paris 1er',region:'Île-de-France'},
+  {cp:'75004',city:'Paris 4e (Le Marais)',region:'Île-de-France'},
+  {cp:'75006',city:'Paris 6e (Saint-Germain)',region:'Île-de-France'},
+  {cp:'75008',city:'Paris 8e',region:'Île-de-France'},
+  {cp:'75016',city:'Paris 16e',region:'Île-de-France'},
+  {cp:'59000',city:'Lille',region:'Hauts-de-France'},
+  {cp:'59100',city:'Roubaix',region:'Hauts-de-France'},
+  {cp:'69001',city:'Lyon 1er',region:'Auvergne-Rhône-Alpes'},
+  {cp:'69006',city:'Lyon 6e',region:'Auvergne-Rhône-Alpes'},
+  {cp:'13001',city:'Marseille 1er',region:'Sud'},
+  {cp:'13008',city:'Marseille 8e',region:'Sud'},
+  {cp:'33000',city:'Bordeaux',region:'Nouvelle-Aquitaine'},
+  {cp:'31000',city:'Toulouse',region:'Occitanie'},
+  {cp:'44000',city:'Nantes',region:'Pays de la Loire'},
+  {cp:'67000',city:'Strasbourg',region:'Grand Est'},
+  {cp:'06000',city:'Nice',region:'Côte d\'Azur'},
+  {cp:'34000',city:'Montpellier',region:'Occitanie'},
+  {cp:'35000',city:'Rennes',region:'Bretagne'},
+  {cp:'76000',city:'Rouen',region:'Normandie'},
+  {cp:'54000',city:'Nancy',region:'Grand Est'},
+  {cp:'38000',city:'Grenoble',region:'Auvergne-Rhône-Alpes'},
+  {cp:'80000',city:'Amiens',region:'Hauts-de-France'},
+  {cp:'29000',city:'Brest',region:'Bretagne'},
+  {cp:'57000',city:'Metz',region:'Grand Est'},
+];
+
+var MOCK_STORES={
+  '75':[
+    {name:'Petit Bateau Paris Saint-Germain',addr:'116 Rue du Bac, Paris 7e',dist:'centre',delai:'2h',fast:true},
+    {name:'Petit Bateau Paris Marais',addr:'76 Rue de Rivoli, Paris 4e',dist:'2 km',delai:'2h',fast:true},
+    {name:'Petit Bateau Paris Passy',addr:'62 Rue de Passy, Paris 16e',dist:'4 km',delai:'2h',fast:true},
+    {name:'Petit Bateau Paris Opéra',addr:'24 Bd des Capucines, Paris 9e',dist:'3 km',delai:'3 jours',fast:false},
+  ],
+  '59':[
+    {name:'Petit Bateau Lille',addr:'22 Rue de Béthune, Lille',dist:'centre',delai:'2h',fast:true},
+    {name:'Petit Bateau Roubaix',addr:'Centre McArthurGlen, Roubaix',dist:'12 km',delai:'3 jours',fast:false},
+  ],
+  '69':[
+    {name:'Petit Bateau Lyon Part-Dieu',addr:'Centre Part-Dieu, Lyon 3e',dist:'centre',delai:'2h',fast:true},
+    {name:'Petit Bateau Lyon Presqu\'île',addr:'22 Rue de la République, Lyon 2e',dist:'2 km',delai:'2h',fast:true},
+  ],
+  '13':[
+    {name:'Petit Bateau Marseille',addr:'Centre Bourse, Marseille 1er',dist:'centre',delai:'2h',fast:true},
+    {name:'Petit Bateau Marseille Prado',addr:'Av. du Prado, Marseille 8e',dist:'6 km',delai:'3 jours',fast:false},
+  ],
+  '33':[
+    {name:'Petit Bateau Bordeaux',addr:'28 Cours de l\'Intendance, Bordeaux',dist:'centre',delai:'2h',fast:true},
+  ],
+  '31':[
+    {name:'Petit Bateau Toulouse',addr:'12 Rue Alsace-Lorraine, Toulouse',dist:'centre',delai:'2h',fast:true},
+    {name:'Petit Bateau Toulouse Blagnac',addr:'Centre Odysseum, Blagnac',dist:'9 km',delai:'3 jours',fast:false},
+  ],
+  '44':[
+    {name:'Petit Bateau Nantes',addr:'8 Rue Crébillon, Nantes',dist:'centre',delai:'2h',fast:true},
+  ],
+  '67':[
+    {name:'Petit Bateau Strasbourg',addr:'22 Rue des Grandes Arcades',dist:'centre',delai:'2h',fast:true},
+  ],
+  'default':[
+    {name:'Boutique Petit Bateau Centre',addr:'Centre-ville',dist:'centre',delai:'2h',fast:true},
+    {name:'Boutique Petit Bateau CC',addr:'Centre commercial',dist:'5 km',delai:'3 jours',fast:false},
+  ]
+};
+
+/* ── State ── */
+var dbPostal=null,dbCity=null,dbStoresOpen=false,dbChosenStore=null;
+var dbAcIdx=-1,dbAcFiltered=[],dbTimer=null;
+var pcInput=document.getElementById('db-pc-input');
+var acBox=document.getElementById('db-ac');
+
+/* ── Autocomplétion ── */
+pcInput.addEventListener('input',function(){
+  var v=this.value.trim();
+  document.getElementById('db-pc-clear').style.display=v?'block':'none';
+  clearTimeout(dbTimer);
+  if(v.length<2){closeAc();return;}
+  dbTimer=setTimeout(function(){suggest(v);},120);
+});
+pcInput.addEventListener('keydown',function(e){
+  if(!acBox.classList.contains('open'))return;
+  if(e.key==='ArrowDown'){dbAcIdx=Math.min(dbAcIdx+1,dbAcFiltered.length-1);highlight();e.preventDefault();}
+  else if(e.key==='ArrowUp'){dbAcIdx=Math.max(dbAcIdx-1,0);highlight();e.preventDefault();}
+  else if(e.key==='Enter'&&dbAcIdx>=0){pickCity(dbAcFiltered[dbAcIdx]);e.preventDefault();}
+  else if(e.key==='Escape'){closeAc();}
+});
+document.addEventListener('click',function(e){
+  if(!document.querySelector('.db-postal-wrap').contains(e.target))closeAc();
+});
+
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+function suggest(v){
+  var n=norm(v);
+  dbAcFiltered=MOCK_CITIES.filter(function(c){return norm(c.cp).startsWith(n)||norm(c.city).includes(n);}).slice(0,6);
+  if(!dbAcFiltered.length){acBox.innerHTML='<div style="padding:10px 12px;font-size:12px;color:#9e9990;">Aucun résultat</div>';acBox.classList.add('open');return;}
+  dbAcIdx=-1;renderAc();
+}
+function renderAc(){
+  acBox.innerHTML=dbAcFiltered.map(function(c,i){
+    return '<div class="db-ac-item'+(i===dbAcIdx?' on':'')+'" data-i="'+i+'">'+
+      '<span class="db-ac-cp">'+c.cp+'</span>'+
+      '<span class="db-ac-city">'+c.city+'</span>'+
+      '<span class="db-ac-reg">'+c.region+'</span>'+
+      '</div>';
+  }).join('');
+  acBox.querySelectorAll('.db-ac-item').forEach(function(el){
+    el.addEventListener('mousedown',function(e){e.preventDefault();pickCity(dbAcFiltered[+this.dataset.i]);});
+  });
+  acBox.classList.add('open');
+}
+function highlight(){acBox.querySelectorAll('.db-ac-item').forEach(function(el,i){el.classList.toggle('on',i===dbAcIdx);});}
+function closeAc(){acBox.classList.remove('open');acBox.innerHTML='';dbAcIdx=-1;}
+
+function pickCity(c){
+  dbPostal=c.cp;dbCity=c.city;
+  pcInput.value=c.cp+' — '+c.city;
+  document.getElementById('db-pc-clear').style.display='block';
+  closeAc();applyLocation();
+}
+
+function dbClearPostal(){
+  pcInput.value='';dbPostal=null;dbCity=null;
+  document.getElementById('db-pc-clear').style.display='none';
+  closeAc();resetSame();resetStores();dbChosenStore=null;
+  var r3=document.getElementById('db-cc-r3');
+  r3.textContent='Choisir une boutique →';r3.style.color='';r3.style.fontWeight='';
+}
+
+function getStores(){return !dbPostal?MOCK_STORES['default']:MOCK_STORES[dbPostal.substring(0,2)]||MOCK_STORES['default'];}
+
+function applyLocation(){
+  var opt=document.getElementById('db-same');
+  opt.classList.remove('disabled');
+  opt.onclick=function(){dbSelect(this);};
+  document.getElementById('db-same-r3').innerHTML=
+    '<span style="display:flex;align-items:center;gap:4px;color:#2a6e4a;font-size:11px;">'+
+    '<svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#2a6e4a" stroke-width="1.5"/><path d="M4 6l1.5 1.5L8 4.5" stroke="#2a6e4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'+
+    'Disponible à '+dbCity+' · Commandez avant 13h</span>';
+  var stores=getStores();
+  if(stores.length&&!dbChosenStore){
+    dbChosenStore=stores[0].name;
+    var s=stores[0];
+    var lbl='Retrait en '+s.delai;
+    document.getElementById('db-cc-r3').innerHTML=
+      '<span style="color:'+(s.fast?'#2a6e4a':'#7a4a10')+';font-weight:600;">'+dbChosenStore+' · '+lbl+'</span>'+
+      '<span class="db-link" onclick="event.stopPropagation();openStores()">Changer de boutique</span>';
+  }
+  if(dbStoresOpen)renderStores();
+}
+
+function resetSame(){
+  var opt=document.getElementById('db-same');
+  opt.classList.add('disabled');opt.onclick=null;opt.classList.remove('selected');
+  document.getElementById('db-same-r3').innerHTML=
+    '<span class="db-lock"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M9 5H3V4a3 3 0 1 1 6 0v1zm1 0V4a4 4 0 0 0-8 0v1H1v6h10V5H10z" fill="#bfbbb5"/></svg>Entrez votre code postal pour vérifier</span>';
+}
+function resetStores(){
+  var sl=document.getElementById('db-store-list');
+  sl.classList.remove('open');sl.innerHTML='';dbStoresOpen=false;
+  document.getElementById('db-cc').classList.remove('selected','cc-open');
+}
+function openStores(){
+  var sl=document.getElementById('db-store-list');
+  renderStores();sl.classList.add('open');dbStoresOpen=true;
+  document.getElementById('db-cc').classList.add('selected','cc-open');
+}
+function dbToggleStores(){
+  var sl=document.getElementById('db-store-list');
+  dbStoresOpen=!dbStoresOpen;
+  if(dbStoresOpen){
+    renderStores();sl.classList.add('open');
+    document.getElementById('db-cc').classList.add('selected','cc-open');
+    document.querySelectorAll('.db-option').forEach(function(o){if(o.id!=='db-cc')o.classList.remove('selected');});
+  } else {
+    sl.classList.remove('open');
+    document.getElementById('db-cc').classList.remove('cc-open');
+    if(!dbChosenStore)document.getElementById('db-cc').classList.remove('selected');
+  }
+}
+function renderStores(){
+  var stores=getStores();
+  var sl=document.getElementById('db-store-list');
+  var hint=dbCity?'Boutiques proches de '+dbCity:'Boutiques disponibles';
+  sl.innerHTML='<div class="db-store-hint">'+hint+'</div>'+
+    stores.map(function(s){
+      var isCh=dbChosenStore===s.name;
+      var cls=s.fast?'dly-fast':'dly-slow';
+      var lbl='Retrait en '+s.delai;
+      return '<div class="db-store-item'+(isCh?' chosen':'')+'" data-name="'+s.name+'" data-delay="'+lbl+'" data-fast="'+s.fast+'">'+
+        '<div style="flex:1"><div class="db-store-name">'+s.name+'</div><div class="db-store-addr">'+s.addr+' · '+s.dist+'</div></div>'+
+        '<div class="'+cls+'">'+lbl+'</div>'+
+        '</div>';
+    }).join('');
+  sl.querySelectorAll('.db-store-item').forEach(function(el){
+    el.addEventListener('click',function(e){
+      e.stopPropagation();
+      dbChosenStore=this.dataset.name;
+      var lbl=this.dataset.delay;var isFast=this.dataset.fast==='true';
+      sl.querySelectorAll('.db-store-item').forEach(function(s){s.classList.remove('chosen');});
+      this.classList.add('chosen');
+      document.getElementById('db-cc-r3').innerHTML=
+        '<span style="color:'+(isFast?'#2a6e4a':'#7a4a10')+';font-weight:600;">'+dbChosenStore+' · '+lbl+'</span>'+
+        '<span class="db-link" onclick="event.stopPropagation();openStores()">Changer de boutique</span>';
+      sl.classList.remove('open');dbStoresOpen=false;
+      document.getElementById('db-cc').classList.add('selected');
+      document.getElementById('db-cc').classList.remove('cc-open');
+    });
+  });
+}
+function dbSelect(el){
+  if(el.classList.contains('disabled'))return;
+  if(el.id==='db-cc')return;
+  document.querySelectorAll('.db-option').forEach(function(o){o.classList.remove('selected');});
+  el.classList.add('selected');
+  document.getElementById('db-store-list').classList.remove('open');
+  dbStoresOpen=false;document.getElementById('db-cc').classList.remove('cc-open');
+}
+
+/* ── UI helpers ── */
+function setThumb(src,el){
+  document.querySelectorAll('.thumb').forEach(function(t){t.classList.remove('active');});
+  el.classList.add('active');
+  var img=document.getElementById('main-img');
+  var fb=document.getElementById('main-fallback');
+  if(img){img.style.display='block';img.src=src;if(fb)fb.style.display='none';}
+}
+function selectSize(btn){
+  document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+}
+function selectColor(el,name){
+  document.querySelectorAll('.color-swatch').forEach(function(s){s.classList.remove('active');});
+  el.classList.add('active');
+  document.getElementById('color-val').textContent=name;
+}
+function toggleAcc(btn){
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+</script>
+</body>
+</html>
